@@ -12,7 +12,7 @@ with open("../outputs/transcripts/transcript_text_and_timestamps.json",'r') as f
 with open("../outputs/reel_metadata/reel_metadata.json",'r') as f:
     reel_metadata=json.load(f)
 
-reels_folder='../outputs/generated_clips'
+reels_folder='../outputs/vertical_reels'
 
 output_folder='../outputs/captions'
 
@@ -49,17 +49,17 @@ for reel_info in reel_metadata:
 
         txt_clip=TextClip(
             text=text,
-            font_size=40,
+            font_size=70,
             color="white",
             stroke_color="black",
             stroke_width=2,
-            size=(int(video.w * 0.8), None),
+            size=(int(video.w * 0.9), None),
             method="caption"
         )
 
         txt_clip=(
             txt_clip
-            .with_position(("center","bottom"))
+            .with_position(("center",video.h * 0.75))
             .with_start(start_time)
             .with_end(end_time)
         )
